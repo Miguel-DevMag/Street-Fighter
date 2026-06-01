@@ -1219,9 +1219,9 @@ video {
   /* Título mobile visível apenas quando hamburguer existe */
   .nav-titulo-mobile {
     display: block;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
     white-space: nowrap;
   }
 
