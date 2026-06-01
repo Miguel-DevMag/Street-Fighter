@@ -649,6 +649,7 @@ video {
 }
 
 .carousel-btn {
+  position: relative;
   background: none;
   border: none;
   cursor: pointer;
@@ -662,9 +663,12 @@ video {
 }
 
 .carousel-btn img {
-  width: 200px;
-  height: auto;
   position: absolute;
+  width: 200px;
+  top: 30%;
+  transform: translateY(-50%);
+  filter: brightness(1.5);
+  height: auto;
 }
 
 .carousel-btn:hover {
@@ -1040,58 +1044,63 @@ video {
   font-style: italic;
   color: #ffffff;
 }
- .sessao-ingressos {
-    padding: 50px 5% 100px 5%;
-    text-align: center;
-  }
 
-  .container-cta-ingressos {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  .titulo-secao {
-    font-family: "Orbitron", sans-serif;
-    color: #e1e4e6;
-    text-align: center;
-    margin-bottom: 50px;
-    letter-spacing: 5px;
-    font-size: 2rem;
+.sessao-ingressos {
+  padding: 50px 5% 100px 5%;
+  text-align: center;
 }
 
-  .cta-descricao {
-    font-size: 1.1rem;
-    letter-spacing: 2px;
-    font-weight: 500;
-    opacity: 0.5;
-    font-family: "Inter", sans-serif;
-    margin-bottom: 20px;
-    color: #e4e4e4;
-  }
+.container-cta-ingressos {
+  max-width: 800px;
+  margin: 0 auto;
+}
 
-  .botao-comprar-agora {
-    font-size: 1.2rem;
-    padding: 20px 60px;
-    background: #ffffff;
-    color: #000000;
-    border: none;
-    font-family: "Inter", sans-serif;
-    letter-spacing: 2px;
-    font-weight: 700;
-  }
-  .botao-comprar-agora:hover{
-    background: #ffffff;
-    color: #000000;
-    box-shadow: 0 0 20px rgb(255, 255, 255, 0.5);
-  }
-  .etiqueta-segura {
-    margin-top: 25px;
-    font-size: 0.7rem;
-    letter-spacing: 2px;
-    opacity: 0.5;
-    font-weight: 500;
-    font-family: "Inter", sans-serif;
-    color: #e4e4e4; 
-  }
+.titulo-secao {
+  font-family: "Orbitron", sans-serif;
+  color: #e1e4e6;
+  text-align: center;
+  margin-bottom: 50px;
+  letter-spacing: 5px;
+  font-size: 2rem;
+}
+
+.cta-descricao {
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  font-weight: 500;
+  opacity: 0.5;
+  font-family: "Inter", sans-serif;
+  margin-bottom: 20px;
+  color: #e4e4e4;
+}
+
+.botao-comprar-agora {
+  font-size: 1.2rem;
+  padding: 20px 60px;
+  background: #ffffff;
+  color: #000000;
+  border: none;
+  font-family: "Inter", sans-serif;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.botao-comprar-agora:hover {
+  background: #ffffff;
+  color: #000000;
+  box-shadow: 0 0 20px rgb(255, 255, 255, 0.5);
+}
+
+.etiqueta-segura {
+  margin-top: 25px;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  opacity: 0.5;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+  color: #e4e4e4;
+}
+
 .rodape {
   padding: 100px 0 50px 0;
   text-align: center;
@@ -1126,8 +1135,6 @@ video {
    - ≤1400px : telas grandes (laptops)
    - ≤992px  : tablets
    - ≤600px  : celulares */
-
-/* Desativa cursor custom em touch */
 @media (hover: none) and (pointer: coarse) {
   * {
     cursor: auto !important;
@@ -1269,6 +1276,15 @@ video {
 
   .info-cartao h3 {
     font-size: 2rem;
+  }
+
+  .btn-next img {
+    width: 150px;
+  }
+
+  .btn-prev img {
+    width: 150px;
+
   }
 
   /* Mídia */
@@ -1417,9 +1433,8 @@ video {
   }
 
   .carousel-btn img {
-    width: 120px;
+    display: none;
   }
-
   /* Mídia */
   .midia-section {
     padding: 40px 16px;
@@ -1471,6 +1486,7 @@ video {
   .texto-card {
     font-size: 0.8rem;
   }
+
   /* Rodapé */
   .rodape {
     padding: 60px 16px 40px;
