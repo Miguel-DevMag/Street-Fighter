@@ -35,8 +35,8 @@
                     <li><a href="#trailer" class="nav-link">TRAILER</a></li>
                     <li><a href="#sinopse" class="nav-link">SINOPSE</a></li>
                     <li><a href="#lutadores" class="nav-link">LUTADORES</a></li>
-                    <li><a href="#infor-game" class="nav-link">MIDIA</a></li>
-                    <li><a href="#footer" class="nav-link">COMENTARIOS</a></li>
+                    <li><a href="#midia" class="nav-link">MIDIA</a></li>
+                    <li><a href="#comentarios" class="nav-link">COMENTARIOS</a></li>
                     <li><a href="#ingressos" class="nav-link">INGRESSOS</a></li>
                 </ul>
         <div class="nav-sistema">
@@ -49,7 +49,7 @@
         </nav>
       </header>
 
-      <main class="container">
+      <main class="container" id="home">
         <div class="video-container">
           <video autoplay muted loop id="videoHero" src="image/background-street-fighter.mp4"></video>
           <div class="sobreposicao"></div>
@@ -184,7 +184,7 @@
             </button>
         </div>
     </section>
-    <section id="infor-game" class="midia-section secao-revelar">
+    <section id="midia" class="midia-section secao-revelar">
         <h2 class="titulo-midia">INSIGHTS DE COMBATE</h2>
         <div class="container-midia">
             <div class="cartao-midia esquerda">
@@ -215,7 +215,7 @@
             </div>
         </div>
     </section>
-    <section class="sessao-depoimentos secao-revelar revelada" id="depoimentos">
+    <section class="sessao-depoimentos secao-revelar revelada" id="comentarios">
         <div class="cabecalho-secao">
             <div class="linha-decorativa"></div>
             <h2 class="titulo-secao">arena da comunidade</h2>
@@ -585,7 +585,22 @@
         </div>
             </div>
         </div>
+
+        <section class="sessao-ingressos secao-revelar revelada" id="ingressos">
+        <div class="container-cta-ingressos">
+            <h2 class="titulo-secao">GARANTA SEU LUGAR NA ARENA</h2>
+            <p class="cta-descricao">Acesse a plataforma oficial para adquirir seu ingresso de forma segura.</p>
+            <button class="botao-primario botao-comprar-agora" onclick="window.open('https://www.ingresso.com/filme/street-fighter')">
+                COMPRAR INGRESSO OFICIAL
+            </button>
+            <div class="etiqueta-segura">
+                <img src="image/escudo-seguro.png" style="width: 15px; vertical-align: middle; margin-right: 5px;" alt="Seguro">
+                PLATAFORMA CRIPTOGRAFADA E SEGURA
+            </div>
+        </div>
     </section>
+    
+    </section id="footer">
     <footer class="rodape secao-revelar revelada">
         <div class="linha-rodape"></div>
         <div class="creditos">

@@ -1,13 +1,14 @@
 :root {
-    --bg: #000000;
-    --texto: #FFFFFF;
-    --ryu: #00A2FF;
-    --ken: #FF0000;
-    --vidro: rgba(255, 255, 255, 0.05);
-    --borda: rgba(255, 255, 255, 0.1);
-    --orbitron: 'Orbitron', sans-serif;
-    --inter: 'Inter', sans-serif;
+  --bg: #000000;
+  --texto: #FFFFFF;
+  --ryu: #00A2FF;
+  --ken: #FF0000;
+  --vidro: rgba(255, 255, 255, 0.05);
+  --borda: rgba(255, 255, 255, 0.1);
+  --orbitron: 'Orbitron', sans-serif;
+  --inter: 'Inter', sans-serif;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -116,9 +117,17 @@ body {
   transition: all 0.3s;
 }
 
-.nav-hamburguer.aberto span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-.nav-hamburguer.aberto span:nth-child(2) { opacity: 0; }
-.nav-hamburguer.aberto span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+.nav-hamburguer.aberto span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-hamburguer.aberto span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-hamburguer.aberto span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
 
 .nav {
   display: flex;
@@ -794,8 +803,13 @@ video {
   transition: all 0.3s;
 }
 
-.cartao-midia.esquerda .label-midia { left: 30px; }
-.cartao-midia.direita .label-midia  { right: 30px; }
+.cartao-midia.esquerda .label-midia {
+  left: 30px;
+}
+
+.cartao-midia.direita .label-midia {
+  right: 30px;
+}
 
 /* Overlay info para hover das imagens de mídia */
 .midia-overlay {
@@ -804,7 +818,7 @@ video {
   left: 0;
   right: 0;
   padding: 28px 24px 20px;
-  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.5) 60%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.5) 60%, transparent 100%);
   z-index: 6;
   transform: translateY(20px);
   opacity: 0;
@@ -1026,7 +1040,58 @@ video {
   font-style: italic;
   color: #ffffff;
 }
+ .sessao-ingressos {
+    padding: 50px 5% 100px 5%;
+    text-align: center;
+  }
 
+  .container-cta-ingressos {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .titulo-secao {
+    font-family: "Orbitron", sans-serif;
+    color: #e1e4e6;
+    text-align: center;
+    margin-bottom: 50px;
+    letter-spacing: 5px;
+    font-size: 2rem;
+}
+
+  .cta-descricao {
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    font-weight: 500;
+    opacity: 0.5;
+    font-family: "Inter", sans-serif;
+    margin-bottom: 20px;
+    color: #e4e4e4;
+  }
+
+  .botao-comprar-agora {
+    font-size: 1.2rem;
+    padding: 20px 60px;
+    background: #ffffff;
+    color: #000000;
+    border: none;
+    font-family: "Inter", sans-serif;
+    letter-spacing: 2px;
+    font-weight: 700;
+  }
+  .botao-comprar-agora:hover{
+    background: #ffffff;
+    color: #000000;
+    box-shadow: 0 0 20px rgb(255, 255, 255, 0.5);
+  }
+  .etiqueta-segura {
+    margin-top: 25px;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    opacity: 0.5;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+    color: #e4e4e4; 
+  }
 .rodape {
   padding: 100px 0 50px 0;
   text-align: center;
@@ -1057,34 +1122,54 @@ video {
 }
 
 
-/* ========================================
-   RESPONSIVO
+/* RESPONSIVO
    - ≤1400px : telas grandes (laptops)
    - ≤992px  : tablets
-   - ≤600px  : celulares
-======================================== */
+   - ≤600px  : celulares */
 
 /* Desativa cursor custom em touch */
 @media (hover: none) and (pointer: coarse) {
-  * { cursor: auto !important; }
-  .cursor-tatico { display: none; }
-  .streg-top, .streg-bottom { display: none; }
+  * {
+    cursor: auto !important;
+  }
+
+  .cursor-tatico {
+    display: none;
+  }
+
+  .streg-top,
+  .streg-bottom {
+    display: none;
+  }
 }
 
 /* --- TELAS GRANDES (≤1400px) --- */
 @media (max-width: 1400px) {
-  .txt-principal { font-size: 6rem; }
-  .cartas img { height: 620px; width: 415px; }
-  .container-cards-expansivos { height: 560px; }
+  .txt-principal {
+    font-size: 6rem;
+  }
+
+  .cartas img {
+    height: 620px;
+    width: 415px;
+  }
+
+  .container-cards-expansivos {
+    height: 560px;
+  }
 }
 
 /* --- TABLET (≤992px) --- */
 @media (max-width: 992px) {
 
   /* Nav — hamburguer */
-  .menu-navegacao { padding: 12px 20px; }
+  .menu-navegacao {
+    padding: 12px 20px;
+  }
 
-  .nav { padding: 10px 20px; }
+  .nav {
+    padding: 10px 20px;
+  }
 
   .nav ul {
     display: none;
@@ -1101,20 +1186,39 @@ video {
     z-index: 1050;
   }
 
-  .nav ul.aberta { display: flex; }
+  .nav ul.aberta {
+    display: flex;
+  }
 
-  .nav ul li a { font-size: 18px; letter-spacing: 4px; }
+  .nav ul li a {
+    font-size: 18px;
+    letter-spacing: 4px;
+  }
 
-  .nav-hamburguer { display: flex; }
+  .nav-hamburguer {
+    display: flex;
+  }
 
-  .nav-sistema p { display: none; }
+  .nav-sistema p {
+    display: none;
+  }
 
   /* Hero */
-  .txt-principal { font-size: 4.5rem; letter-spacing: 8px; }
-  .subtitulo { font-size: 13px; letter-spacing: 3px; }
+  .txt-principal {
+    font-size: 4.5rem;
+    letter-spacing: 8px;
+  }
+
+  .subtitulo {
+    font-size: 13px;
+    letter-spacing: 3px;
+  }
 
   /* Trailer */
-  .titulo-trailer { font-size: 2rem; letter-spacing: 6px; }
+  .titulo-trailer {
+    font-size: 2rem;
+    letter-spacing: 6px;
+  }
 
   /* Sinopse — empilha verticalmente */
   .sinopse-section {
@@ -1123,87 +1227,256 @@ video {
     align-items: center;
     text-align: center;
   }
-  .sinopse-content { max-width: 100%; }
-  .titulo-sinopse { font-size: 22px; letter-spacing: 3px; }
-  .texto-sinopse { font-size: 20px; }
-  .cartas img { height: 480px; width: 320px; }
+
+  .sinopse-content {
+    max-width: 100%;
+  }
+
+  .titulo-sinopse {
+    font-size: 22px;
+    letter-spacing: 3px;
+  }
+
+  .texto-sinopse {
+    font-size: 20px;
+  }
+
+  .cartas img {
+    height: 480px;
+    width: 320px;
+  }
 
   /* Lutadores — carrossel scroll horizontal */
-  .sessao-personagens { padding: 60px 4%; }
-  .titulo-lutadores { font-size: 2rem; margin-bottom: 32px; }
-  .container-cards-expansivos { height: 480px; gap: 12px; }
-  .info-cartao { bottom: 24px; left: 20px; right: 20px; }
-  .info-cartao h3 { font-size: 2rem; }
+  .sessao-personagens {
+    padding: 60px 4%;
+  }
+
+  .titulo-lutadores {
+    font-size: 2rem;
+    margin-bottom: 32px;
+  }
+
+  .container-cards-expansivos {
+    height: 480px;
+    gap: 12px;
+  }
+
+  .info-cartao {
+    bottom: 24px;
+    left: 20px;
+    right: 20px;
+  }
+
+  .info-cartao h3 {
+    font-size: 2rem;
+  }
 
   /* Mídia */
-  .midia-section { padding: 60px 4%; }
-  .titulo-midia { font-size: 2rem; letter-spacing: 4px; margin-bottom: 32px; }
+  .midia-section {
+    padding: 60px 4%;
+  }
+
+  .titulo-midia {
+    font-size: 2rem;
+    letter-spacing: 4px;
+    margin-bottom: 32px;
+  }
+
   .container-midia {
     grid-template-columns: 1fr;
     height: auto;
     gap: 20px;
   }
-  .cartao-midia { height: 320px; }
+
+  .cartao-midia {
+    height: 320px;
+  }
 
   /* Depoimentos */
-  .sessao-depoimentos { padding: 60px 0; }
-  .card-depoimento { min-width: 280px; padding: 22px; }
+  .sessao-depoimentos {
+    padding: 60px 0;
+  }
+
+  .card-depoimento {
+    min-width: 280px;
+    padding: 22px;
+  }
 }
 
 /* --- CELULAR (≤600px) --- */
 @media (max-width: 600px) {
 
   /* Nav */
-  .menu-navegacao { padding: 10px 16px; }
-  .nav { padding: 8px 16px; }
-  .nav img { width: 64px; }
+  .menu-navegacao {
+    padding: 10px 16px;
+  }
+
+  .nav {
+    padding: 8px 20px;
+  }
+
+  .nav img {
+    width: 64px;
+  }
 
   /* Decorativos laterais — sem espaço em tela pequena */
-  .streg-top, .streg-bottom { display: none; }
+  .streg-top,
+  .streg-bottom {
+    display: none;
+  }
 
   /* Hero */
-  .txt-principal { font-size: 2.8rem; letter-spacing: 5px; }
-  .subtitulo { font-size: 11px; letter-spacing: 2px; }
-  .btn-principal { padding: 12px 28px; font-size: 0.75rem; }
+  .txt-principal {
+    font-size: 2.8rem;
+    letter-spacing: 5px;
+  }
+
+  .subtitulo {
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+
+  .btn-principal {
+    padding: 12px 28px;
+    font-size: 0.75rem;
+  }
 
   /* Trailer */
-  .trailer-section { padding: 24px 16px; }
-  .titulo-trailer { font-size: 1.4rem; letter-spacing: 4px; margin-bottom: 20px; }
-  .recording-text { font-size: 0.5rem; }
+  .trailer-section {
+    padding: 24px 16px;
+  }
+
+  .titulo-trailer {
+    font-size: 1.4rem;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+  }
+
+  .recording-text {
+    font-size: 0.5rem;
+  }
 
   /* Sinopse */
-  .sinopse-section { padding: 40px 16px 32px; gap: 24px; }
-  .titulo-sinopse { font-size: 16px; letter-spacing: 2px; }
-  .texto-sinopse { font-size: 15px; letter-spacing: 1px; }
-  .cartas img { height: 380px; width: 100%; max-width: 280px; }
+  .sinopse-section {
+    padding: 40px 16px 32px;
+    gap: 24px;
+  }
+
+  .titulo-sinopse {
+    font-size: 16px;
+    letter-spacing: 2px;
+  }
+
+  .texto-sinopse {
+    font-size: 15px;
+    letter-spacing: 1px;
+  }
+
+  .cartas img {
+    height: 380px;
+    width: 100%;
+    max-width: 280px;
+  }
 
   /* Lutadores */
-  .sessao-personagens { padding: 40px 16px; }
-  .titulo-lutadores { font-size: 1.4rem; letter-spacing: 3px; margin-bottom: 24px; }
-  .container-cards-expansivos { height: 400px; gap: 8px; }
-  .cartao { border-radius: 10px; }
-  .info-cartao { bottom: 16px; left: 14px; right: 14px; }
-  .info-cartao h3 { font-size: 1.5rem; }
-  .info-cartao p { font-size: 0.75rem; }
-  .container-status { margin: 12px 0; }
-  .carousel-btn img { width: 120px; }
+  .sessao-personagens {
+    padding: 40px 16px;
+  }
+
+  .titulo-lutadores {
+    font-size: 1.4rem;
+    letter-spacing: 3px;
+    margin-bottom: 24px;
+  }
+
+  .container-cards-expansivos {
+    height: 400px;
+    gap: 8px;
+  }
+
+  .cartao {
+    border-radius: 10px;
+  }
+
+  .info-cartao {
+    bottom: 16px;
+    left: 14px;
+    right: 14px;
+  }
+
+  .info-cartao h3 {
+    font-size: 1.5rem;
+  }
+
+  .info-cartao p {
+    font-size: 0.75rem;
+  }
+
+  .container-status {
+    margin: 12px 0;
+  }
+
+  .carousel-btn img {
+    width: 120px;
+  }
 
   /* Mídia */
-  .midia-section { padding: 40px 16px; }
-  .titulo-midia { font-size: 1.4rem; letter-spacing: 3px; margin-bottom: 24px; }
-  .cartao-midia { height: 240px; border-radius: 10px; }
-  .label-midia { font-size: 10px; bottom: 16px; }
-  .cartao-midia.esquerda .label-midia { left: 16px; }
-  .cartao-midia.direita .label-midia  { right: 16px; }
+  .midia-section {
+    padding: 40px 16px;
+  }
+
+  .titulo-midia {
+    font-size: 1.4rem;
+    letter-spacing: 3px;
+    margin-bottom: 24px;
+  }
+
+  .cartao-midia {
+    height: 240px;
+    border-radius: 10px;
+  }
+
+  .label-midia {
+    font-size: 10px;
+    bottom: 16px;
+  }
+
+  .cartao-midia.esquerda .label-midia {
+    left: 16px;
+  }
+
+  .cartao-midia.direita .label-midia {
+    right: 16px;
+  }
 
   /* Depoimentos */
-  .sessao-depoimentos { padding: 40px 0; }
-  .cabecalho-secao { padding: 0 16px; }
-  .titulo-secao { font-size: 1rem; letter-spacing: 3px; }
-  .card-depoimento { min-width: 240px; padding: 18px; }
-  .texto-card { font-size: 0.8rem; }
+  .sessao-depoimentos {
+    padding: 40px 0;
+  }
 
+  .cabecalho-secao {
+    padding: 0 16px;
+  }
+
+  .titulo-secao {
+    font-size: 1rem;
+    letter-spacing: 3px;
+  }
+
+  .card-depoimento {
+    min-width: 240px;
+    padding: 18px;
+  }
+
+  .texto-card {
+    font-size: 0.8rem;
+  }
   /* Rodapé */
-  .rodape { padding: 60px 16px 40px; }
-  .creditos { font-size: 0.55rem; }
-}
+  .rodape {
+    padding: 60px 16px 40px;
+  }
+
+  .creditos {
+    font-size: 0.55rem;
+  }
+}
