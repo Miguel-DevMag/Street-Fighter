@@ -381,10 +381,6 @@ video {
   color: #000000;
   box-shadow: 0 0 10px #ffffff;
 }
-.btn-principal a {
-  color: inherit;
-  text-decoration: none;
-}
 .trailer-section {
   display: flex;
   flex-direction: column;
