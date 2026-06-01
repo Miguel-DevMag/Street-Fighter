@@ -1,42 +1,584 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Strange Fighter</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Orbitron:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="cursor-tatico" style="left: 863px; top: 35px"></div>
+
+    <div class="sobreposicao-ruido"></div>
     <div class="main-container">
+      <div class="streg-top">
+        <p class="stre-funto">SEC_ID: SF2026_PROT</p>
+        <p class="stre-funto">COORD: 35.6895° N, 139.6917° E</p>
+      </div>
+      <div class="streg-bottom">
+        <p class="stre-funto">STK_STATUS: ONLINE</p>
+        <p class="stre-funto">BATTLE_LINK_v4.2</p>
+      </div>
+      <header class="menu-navegacao">
+        <nav class="nav vidro">
+            <div>
+                <img src="image/logo.png" alt="Logo" />
+            </div>
+                <ul>
+                    <li><a href="#home">HOME</a></li>
+                    <li><a href="#trailer">TRAILER</a></li>
+                    <li><a href="#sinopse">SINOPSE</a></li>
+                    <li><a href="#lutadores">LUTADORES</a></li>
+                    <li><a href="#infor-game">MIDIA</a></li>
+                    <li><a href="#footer">COMENTARIOS</a></li>
+                    <li><a href="#ingressos">INGRESSOS</a></li>
+                </ul>
+        <div class="nav-sistema">
+            <div class="botao-ativo"></div>
+           <p>SISTEMA_PRONTO</p>
+        </div>
+        </nav>
+      </header>
 
-        <header class="menu-navegacao">
-            <img src="" alt="">
-            <nav class="nav">
-                <a href="#home">HOME</a>
-                <a href="#trailer">TRAILER</a>
-                <a href="#Sinosp">SINOPSE</a>
-                <a href="#Lutadores">LUTADORES</a>
-                <a href="#infor-game">MIDIA</a>
-                <a href="#footer">COMENTARIOS</a>
-            </nav>
-            <button class="btn" type="button">INGRESSOS</button>
-            <p>SISTEMA_PRONTO</p>
-        </header>
+      <main class="container">
+        <div class="video-container">
+          <video autoplay muted loop id="videoHero" src="image/background-street-fighter.mp4"></video>
+          <div class="sobreposicao"></div>
+        </div>
+        <div class="texto-principal">
+          <h1 class="txt-principal" data-text="STREET FIGHTER">STREET FIGHTER</h1>
+          <p class="subtitulo">O DESTINO DO MUNDO SERÁ DECIDIDO NAS RUAS.</p>
+          <div>
+            <button class="btn-principal">ASSISTIR TRAILER</button>
+          </div>
+        </div>
+      </main>
+      <section id="trailer" class="trailer-section">
+        <h2 class="titulo-trailer">TRAILER OFICIAL</h2>
+        <div class="video-trailer vidro-trailer">
+          <video controls poster="image/batalha.png">
+            <source src="image/videostreet-fighter.mp4" type="video/mp4" />
+          </video>
+          <div class="recording">
+          <div class="linha-recording"></div>
+          <div class="ponto-recording"></div>
+          <span class="recording-text">LIVE FEED // CAMERA_DE_COMBATE_01</span>
+        </div>
+      </section>
+        <section id="sinopse" class="sinopse-section">
+          <div class="sinopse-content">
+          <h2 class="titulo-sinopse" data-text="Em um futuro onde o poder corporativo substituiu as nações...">Em um futuro onde o poder corporativo substituiu as nações...</h2>
+          <p class="texto-sinopse" data-text="A Shadaloo emerge como uma ameaça global de controle mental.
+          Ryu, um andarilho em busca do sentido da força, e Ken, um herdeiro lutando contra seu próprio legado,
+          unem forças com uma coalizão internacional de elite.
+          O torneio “World Warrior” não é mais um evento esportivo.
+          É a linha de frente de uma guerra invisível que definirá a liberdade da humanidade.">
+        
+          </p>
+          </div>
+          <div class="cartas">
+            <div>
+              <img src="image/cartas-fanart.png" alt="">
+            </div>
+          </div>
+        </section>
 
-        <main class="container">
-            <div>
-                <video autoplay muted loop id="videoHero" src="" ></video>
-                <div class="sobreposicao"></div>
+        <section class="sessao-personagens secao-revelar revelada" id="lutadores">
+        <h2 class="titulo-lutadores">SELECIONE SEU LUTADOR</h2>
+        <div class="carousel-wrapper">
+            <button class="carousel-btn btn-prev">
+                <img src="image/botao-esquerto.png" alt="Anterior">
+            </button>
+            <div class="container-cards-expansivos">
+                <!-- ryu -->
+                <div class="cartao ativa" style="--accent: #00A2FF;" data-lutador="0">
+                    <img src="image/ryu.png" alt="ryu">
+                    <div class="info-cartao">
+                        <h3>RYU</h3>
+                        <p>o andarilho solitário</p>
+                        <div class="container-status">
+                            <div class="status"><label>hadou-ki</label><div class="barra"><div class="preenchimento" style="width: 95%;"></div></div></div>
+                            <div class="status"><label>técnica</label><div class="barra"><div class="preenchimento" style="width: 90%;"></div></div></div>
+                        </div>
+                        <span class="texto-brilhante">status: pronto para o combate</span>
+                    </div>
+                </div>
+                <!-- ken -->
+                <div class="cartao" style="--accent: #FF4500;" data-lutador="1">
+                    <img src="image/ken.png" alt="ken">
+                    <div class="info-cartao">
+                        <h3>KEN</h3>
+                        <p>o mestre do punho de fogo</p>
+                        <div class="container-status">
+                            <div class="status"><label>velocidade</label><div class="barra"><div class="preenchimento" style="width: 88%;"></div></div></div>
+                            <div class="status"><label>shoryu-ken</label><div class="barra"><div class="preenchimento" style="width: 92%;"></div></div></div>
+                        </div>
+                        <span class="texto-brilhante">status: pronto para o combate</span>
+                    </div>
+                </div>
+                <!-- chun-li -->
+                <div class="cartao" style="--accent: #FFD700;" data-lutador="2">
+                    <img src="image/chunli.png" alt="chun-li">
+                    <div class="info-cartao">
+                        <h3>CHUN-LI</h3>
+                        <p>a detetive da interpol</p>
+                        <div class="container-status">
+                            <div class="status"><label>agilidade</label><div class="barra"><div class="preenchimento" style="width: 98%;"></div></div></div>
+                            <div class="status"><label>técnica</label><div class="barra"><div class="preenchimento" style="width: 94%;"></div></div></div>
+                        </div>
+                        <span class="texto-brilhante">status: pronta para o combate</span>
+                    </div>
+                </div>
+                <!-- guile -->
+                <div class="cartao" style="--accent: #00FF88;" data-lutador="3">
+                    <img src="image/guile.png" alt="guile">
+                    <div class="info-cartao">
+                        <h3>GUILE</h3>
+                        <p>o herói da força aérea</p>
+                        <div class="container-status">
+                            <div class="status"><label>defesa</label><div class="barra"><div class="preenchimento" style="width: 90%;"></div></div></div>
+                            <div class="status"><label>sonic boom</label><div class="barra"><div class="preenchimento" style="width: 85%;"></div></div></div>
+                        </div>
+                        <span class="texto-brilhante">status: pronto para o combate</span>
+                    </div>
+                </div>
+                <!-- cammy -->
+                <div class="cartao" style="--accent: #00E5FF;" data-lutador="4">
+                    <img src="image/cammy.png" alt="cammy">
+                    <div class="info-cartao">
+                        <h3>CAMMY</h3>
+                        <p>a operativa da delta red</p>
+                        <div class="container-status">
+                            <div class="status"><label>velocidade</label><div class="barra"><div class="preenchimento" style="width: 96%;"></div></div></div>
+                            <div class="status"><label>precisão</label><div class="barra"><div class="preenchimento" style="width: 88%;"></div></div></div>
+                        </div>
+                        <span class="texto-brilhante">status: pronta para o combate</span>
+                    </div>
+                </div>
+                <!-- m. bison -->
+                <div class="cartao" style="--accent: #9B59B6;" data-lutador="5">
+                    <img src="image/bison.png" alt="m. bison">
+                    <div class="info-cartao">
+                        <h3>M. BISON</h3>
+                        <p>o mestre do psycho power</p>
+                        <div class="container-status">
+                            <div class="status"><label>poder</label><div class="barra"><div class="preenchimento" style="width: 99%;"></div></div></div>
+                            <div class="status"><label>dominação</label><div class="barra"><div class="preenchimento" style="width: 95%;"></div></div></div>
+                        </div>
+                        <span class="texto-brilhante">status: pronto para o combate</span>
+                    </div>
+                </div>
             </div>
-            <div>
-                <h1>STREET FIGHTER</h1>
-                <p>O DESTINO DO MUNDO SERÁ DECIDIDO NAS RUAS.</p>
+            <button class="carousel-btn btn-next">
+                <img src="image/botao-direito.png" alt="Próximo">
+            </button>
+        </div>
+    </section>
+    <section id="infor-game" class="midia-section">
+        <h2 class="titulo-midia">INSIGHTS DE COMBATE</h2>
+        <div class="container-midia">
+            <div class="cartao-midia esquerda">
+                <img src="image/ryu-sombrio.png" alt="Ryu Sombrio">
+                <div class="moldura-tatico"></div>
+                <span class="label-midia">STK_STATUS: ONLINE</span>
             </div>
-            <div>
-                <button>ASSISTIR TRAILER</button>
+            <div class="cartao-midia centro">
+                <img src="image/batalha.png" alt="Hadouken vs Shoryuken">
+                <div class="moldura-tatico"></div>
             </div>
-        </main>
+            <div class="cartao-midia direita">
+                <img src="image/kimono.png" alt="Kimono Detail">
+                <div class="moldura-tatico"></div>
+                <span class="label-midia">BATTLE_LINK_v4.2</span>
+            </div>
+        </div>
+    </section>
+    <section class="sessao-depoimentos secao-revelar revelada" id="depoimentos">
+        <div class="cabecalho-secao">
+            <div class="linha-decorativa"></div>
+            <h2 class="titulo-secao">arena da comunidade</h2>
+            <div class="linha-decorativa"></div>
+        </div>
+        
+        <div class="container-marquee">
+            <div class="mascara-marquee"></div>
+            <!-- faixa superior: direita para esquerda -->
+            <div class="faixa-marquee esquerda">
+                <div class="grupo-marquee" id="marquee-grupo-1">
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#00a2ff22; color:#00a2ff">R</div>
+                    <div class="info-user">
+                        <span class="nome">ryu_fan_99</span>
+                        <span class="badge">mestre</span>
+                    </div>
+                </div>
+                <p class="texto-card">"hadouken no cinema finalmente! visual impecável."</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#ff450022; color:#ff4500">K</div>
+                    <div class="info-user">
+                        <span class="nome">ken_master</span>
+                        <span class="badge">veterano</span>
+                    </div>
+                </div>
+                <p class="texto-card">"o shoryuken de fogo parece surreal. ansioso!"</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#ffd70022; color:#ffd700">C</div>
+                    <div class="info-user">
+                        <span class="nome">chun_interpol</span>
+                        <span class="badge">lenda</span>
+                    </div>
+                </div>
+                <p class="texto-card">"a melhor representação da chun-li que já vi."</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#00ff8822; color:#00ff88">G</div>
+                    <div class="info-user">
+                        <span class="nome">guile_sonic</span>
+                        <span class="badge">elite</span>
+                    </div>
+                </div>
+                <p class="texto-card">"sonic boom em imax vai ser uma loucura total."</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#00e5ff22; color:#00e5ff">C</div>
+                    <div class="info-user">
+                        <span class="nome">cammy_delta</span>
+                        <span class="badge">agente</span>
+                    </div>
+                </div>
+                <p class="texto-card">"as cenas de ação estão em outro nível de coreografia."</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#9b59b622; color:#9b59b6">B</div>
+                    <div class="info-user">
+                        <span class="nome">bison_lord</span>
+                        <span class="badge">vilão</span>
+                    </div>
+                </div>
+                <p class="texto-card">"shadaloo vai dominar as bilheterias em 2026."</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#ff000022; color:#ff0000">A</div>
+                    <div class="info-user">
+                        <span class="nome">arcade_og</span>
+                        <span class="badge">campeão</span>
+                    </div>
+                </div>
+                <p class="texto-card">"joguei muito o sf2 nos fliperamas, isso é um sonho."</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#00a2ff22; color:#00a2ff">W</div>
+                    <div class="info-user">
+                        <span class="nome">world_warrior</span>
+                        <span class="badge">fã</span>
+                    </div>
+                </div>
+                <p class="texto-card">"finalmente uma adaptação que respeita o material original."</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#00a2ff22; color:#00a2ff">R</div>
+                    <div class="info-user">
+                        <span class="nome">ryu_fan_99</span>
+                        <span class="badge">mestre</span>
+                    </div>
+                </div>
+                <p class="texto-card">"hadouken no cinema finalmente! visual impecável."</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#ff450022; color:#ff4500">K</div>
+                    <div class="info-user">
+                        <span class="nome">ken_master</span>
+                        <span class="badge">veterano</span>
+                    </div>
+                </div>
+                <p class="texto-card">"o shoryuken de fogo parece surreal. ansioso!"</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#ffd70022; color:#ffd700">C</div>
+                    <div class="info-user">
+                        <span class="nome">chun_interpol</span>
+                        <span class="badge">lenda</span>
+                    </div>
+                </div>
+                <p class="texto-card">"a melhor representação da chun-li que já vi."</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#00ff8822; color:#00ff88">G</div>
+                    <div class="info-user">
+                        <span class="nome">guile_sonic</span>
+                        <span class="badge">elite</span>
+                    </div>
+                </div>
+                <p class="texto-card">"sonic boom em imax vai ser uma loucura total."</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#00e5ff22; color:#00e5ff">C</div>
+                    <div class="info-user">
+                        <span class="nome">cammy_delta</span>
+                        <span class="badge">agente</span>
+                    </div>
+                </div>
+                <p class="texto-card">"as cenas de ação estão em outro nível de coreografia."</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#9b59b622; color:#9b59b6">B</div>
+                    <div class="info-user">
+                        <span class="nome">bison_lord</span>
+                        <span class="badge">vilão</span>
+                    </div>
+                </div>
+                <p class="texto-card">"shadaloo vai dominar as bilheterias em 2026."</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#ff000022; color:#ff0000">A</div>
+                    <div class="info-user">
+                        <span class="nome">arcade_og</span>
+                        <span class="badge">campeão</span>
+                    </div>
+                </div>
+                <p class="texto-card">"joguei muito o sf2 nos fliperamas, isso é um sonho."</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#00a2ff22; color:#00a2ff">W</div>
+                    <div class="info-user">
+                        <span class="nome">world_warrior</span>
+                        <span class="badge">fã</span>
+                    </div>
+                </div>
+                <p class="texto-card">"finalmente uma adaptação que respeita o material original."</p>
+            </div>
+        </div>
+            </div>
+            <!-- faixa inferior: esquerda para direita -->
+            <div class="faixa-marquee direita">
+                <div class="grupo-marquee" id="marquee-grupo-2">
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#00a2ff22; color:#00a2ff">R</div>
+                    <div class="info-user">
+                        <span class="nome">ryu_fan_99</span>
+                        <span class="badge">mestre</span>
+                    </div>
+                </div>
+                <p class="texto-card">"hadouken no cinema finalmente! visual impecável."</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#ff450022; color:#ff4500">K</div>
+                    <div class="info-user">
+                        <span class="nome">ken_master</span>
+                        <span class="badge">veterano</span>
+                    </div>
+                </div>
+                <p class="texto-card">"o shoryuken de fogo parece surreal. ansioso!"</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#ffd70022; color:#ffd700">C</div>
+                    <div class="info-user">
+                        <span class="nome">chun_interpol</span>
+                        <span class="badge">lenda</span>
+                    </div>
+                </div>
+                <p class="texto-card">"a melhor representação da chun-li que já vi."</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#00ff8822; color:#00ff88">G</div>
+                    <div class="info-user">
+                        <span class="nome">guile_sonic</span>
+                        <span class="badge">elite</span>
+                    </div>
+                </div>
+                <p class="texto-card">"sonic boom em imax vai ser uma loucura total."</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#00e5ff22; color:#00e5ff">C</div>
+                    <div class="info-user">
+                        <span class="nome">cammy_delta</span>
+                        <span class="badge">agente</span>
+                    </div>
+                </div>
+                <p class="texto-card">"as cenas de ação estão em outro nível de coreografia."</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#9b59b622; color:#9b59b6">B</div>
+                    <div class="info-user">
+                        <span class="nome">bison_lord</span>
+                        <span class="badge">vilão</span>
+                    </div>
+                </div>
+                <p class="texto-card">"shadaloo vai dominar as bilheterias em 2026."</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#ff000022; color:#ff0000">A</div>
+                    <div class="info-user">
+                        <span class="nome">arcade_og</span>
+                        <span class="badge">campeão</span>
+                    </div>
+                </div>
+                <p class="texto-card">"joguei muito o sf2 nos fliperamas, isso é um sonho."</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#00a2ff22; color:#00a2ff">W</div>
+                    <div class="info-user">
+                        <span class="nome">world_warrior</span>
+                        <span class="badge">fã</span>
+                    </div>
+                </div>
+                <p class="texto-card">"finalmente uma adaptação que respeita o material original."</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#00a2ff22; color:#00a2ff">R</div>
+                    <div class="info-user">
+                        <span class="nome">ryu_fan_99</span>
+                        <span class="badge">mestre</span>
+                    </div>
+                </div>
+                <p class="texto-card">"hadouken no cinema finalmente! visual impecável."</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#ff450022; color:#ff4500">K</div>
+                    <div class="info-user">
+                        <span class="nome">ken_master</span>
+                        <span class="badge">veterano</span>
+                    </div>
+                </div>
+                <p class="texto-card">"o shoryuken de fogo parece surreal. ansioso!"</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#ffd70022; color:#ffd700">C</div>
+                    <div class="info-user">
+                        <span class="nome">chun_interpol</span>
+                        <span class="badge">lenda</span>
+                    </div>
+                </div>
+                <p class="texto-card">"a melhor representação da chun-li que já vi."</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#00ff8822; color:#00ff88">G</div>
+                    <div class="info-user">
+                        <span class="nome">guile_sonic</span>
+                        <span class="badge">elite</span>
+                    </div>
+                </div>
+                <p class="texto-card">"sonic boom em imax vai ser uma loucura total."</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#00e5ff22; color:#00e5ff">C</div>
+                    <div class="info-user">
+                        <span class="nome">cammy_delta</span>
+                        <span class="badge">agente</span>
+                    </div>
+                </div>
+                <p class="texto-card">"as cenas de ação estão em outro nível de coreografia."</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#9b59b622; color:#9b59b6">B</div>
+                    <div class="info-user">
+                        <span class="nome">bison_lord</span>
+                        <span class="badge">vilão</span>
+                    </div>
+                </div>
+                <p class="texto-card">"shadaloo vai dominar as bilheterias em 2026."</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#ff000022; color:#ff0000">A</div>
+                    <div class="info-user">
+                        <span class="nome">arcade_og</span>
+                        <span class="badge">campeão</span>
+                    </div>
+                </div>
+                <p class="texto-card">"joguei muito o sf2 nos fliperamas, isso é um sonho."</p>
+            </div>
+        
+            <div class="card-depoimento">
+                <div class="cabecalho-card">
+                    <div class="avatar-letra" style="background:#00a2ff22; color:#00a2ff">W</div>
+                    <div class="info-user">
+                        <span class="nome">world_warrior</span>
+                        <span class="badge">fã</span>
+                    </div>
+                </div>
+                <p class="texto-card">"finalmente uma adaptação que respeita o material original."</p>
+            </div>
+        </div>
+            </div>
+        </div>
+    </section>
+    <footer class="rodape secao-revelar revelada">
+        <div class="linha-rodape"></div>
+        <div class="creditos">
+            <p>DIRETOR: KITAO SAKURAI | PRODUÇÃO: CAPCOM FILMS | ELENCO: [ANDREW KOJI, NOAH CENTINEO, JASON MOMOA]</p>
+            <p>TECNOLOGIA DE HUD: SF_INTERFACE_CORE_v5.0</p>
+        </div>
+        <p class="direitos">© 2026 CAPCOM &amp; SF FILMS. TODOS OS DIREITOS RESERVADOS.</p>
+    </footer>
     </div>
-</body>
-<script src="script.js"></script>
+  </body>
+  <script src="script.js"></script>
 </html>
