@@ -97,6 +97,29 @@ body {
   font-size: 12.94px;
 }
 
+/* Hamburger — oculto por padrão (desktop) */
+.nav-hamburguer {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 6px;
+  z-index: 1100;
+}
+
+.nav-hamburguer span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #ffffff;
+  transition: all 0.3s;
+}
+
+.nav-hamburguer.aberto span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-hamburguer.aberto span:nth-child(2) { opacity: 0; }
+.nav-hamburguer.aberto span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
 .nav {
   display: flex;
   justify-content: space-between;
@@ -437,13 +460,37 @@ video {
   color: #a9abaa;
 }
 
+/* Container de partículas sobre a imagem da sinopse */
+.cartas {
+  position: relative;
+  display: inline-block;
+}
+
 .cartas img {
   height: 770px;
   width: 515px;
+  display: block;
+}
+
+#canvas-particulas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
 }
 
 .sessao-personagens {
   padding: 100px 5%;
+}
+
+/* Scroll reveal */
+.secao-revelar {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
 .secao-revelar.revelada {
@@ -481,8 +528,14 @@ video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
   filter: grayscale(100%);
   transition: all 0.7s;
+}
+
+/* Ken precisa de posição ajustada para preencher o card */
+.cartao[data-lutador="1"] img {
+  object-position: center 10%;
 }
 
 .cartao.ativa {
@@ -741,12 +794,39 @@ video {
   transition: all 0.3s;
 }
 
-.cartao-midia.esquerda .label-midia {
-  left: 30px;
+.cartao-midia.esquerda .label-midia { left: 30px; }
+.cartao-midia.direita .label-midia  { right: 30px; }
+
+/* Overlay info para hover das imagens de mídia */
+.midia-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 28px 24px 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.5) 60%, transparent 100%);
+  z-index: 6;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
 }
 
-.cartao-midia.direita .label-midia {
-  right: 30px;
+.midia-overlay-titulo {
+  font-family: "Orbitron", sans-serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.midia-overlay-sub {
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: #a9abaa;
+  opacity: 0.8;
 }
 
 .cartao-midia:hover {
@@ -766,6 +846,11 @@ video {
 .cartao-midia:hover .label-midia {
   color: #ffffff;
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+.cartao-midia:hover .midia-overlay {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .cartao-midia.esquerda:hover {
@@ -972,16 +1057,153 @@ video {
 }
 
 
+/* ========================================
+   RESPONSIVO
+   - ≤1400px : telas grandes (laptops)
+   - ≤992px  : tablets
+   - ≤600px  : celulares
+======================================== */
 
+/* Desativa cursor custom em touch */
+@media (hover: none) and (pointer: coarse) {
+  * { cursor: auto !important; }
+  .cursor-tatico { display: none; }
+  .streg-top, .streg-bottom { display: none; }
+}
 
+/* --- TELAS GRANDES (≤1400px) --- */
+@media (max-width: 1400px) {
+  .txt-principal { font-size: 6rem; }
+  .cartas img { height: 620px; width: 415px; }
+  .container-cards-expansivos { height: 560px; }
+}
+
+/* --- TABLET (≤992px) --- */
 @media (max-width: 992px) {
+
+  /* Nav — hamburguer */
+  .menu-navegacao { padding: 12px 20px; }
+
+  .nav { padding: 10px 20px; }
+
+  .nav ul {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.97);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    z-index: 1050;
+  }
+
+  .nav ul.aberta { display: flex; }
+
+  .nav ul li a { font-size: 18px; letter-spacing: 4px; }
+
+  .nav-hamburguer { display: flex; }
+
+  .nav-sistema p { display: none; }
+
+  /* Hero */
+  .txt-principal { font-size: 4.5rem; letter-spacing: 8px; }
+  .subtitulo { font-size: 13px; letter-spacing: 3px; }
+
+  /* Trailer */
+  .titulo-trailer { font-size: 2rem; letter-spacing: 6px; }
+
+  /* Sinopse — empilha verticalmente */
+  .sinopse-section {
+    flex-direction: column;
+    padding: 60px 24px 40px;
+    align-items: center;
+    text-align: center;
+  }
+  .sinopse-content { max-width: 100%; }
+  .titulo-sinopse { font-size: 22px; letter-spacing: 3px; }
+  .texto-sinopse { font-size: 20px; }
+  .cartas img { height: 480px; width: 320px; }
+
+  /* Lutadores — carrossel scroll horizontal */
+  .sessao-personagens { padding: 60px 4%; }
+  .titulo-lutadores { font-size: 2rem; margin-bottom: 32px; }
+  .container-cards-expansivos { height: 480px; gap: 12px; }
+  .info-cartao { bottom: 24px; left: 20px; right: 20px; }
+  .info-cartao h3 { font-size: 2rem; }
+
+  /* Mídia */
+  .midia-section { padding: 60px 4%; }
+  .titulo-midia { font-size: 2rem; letter-spacing: 4px; margin-bottom: 32px; }
   .container-midia {
     grid-template-columns: 1fr;
     height: auto;
     gap: 20px;
   }
+  .cartao-midia { height: 320px; }
 
-  .cartao-midia {
-    height: 350px;
-  }
+  /* Depoimentos */
+  .sessao-depoimentos { padding: 60px 0; }
+  .card-depoimento { min-width: 280px; padding: 22px; }
 }
+
+/* --- CELULAR (≤600px) --- */
+@media (max-width: 600px) {
+
+  /* Nav */
+  .menu-navegacao { padding: 10px 16px; }
+  .nav { padding: 8px 16px; }
+  .nav img { width: 64px; }
+
+  /* Decorativos laterais — sem espaço em tela pequena */
+  .streg-top, .streg-bottom { display: none; }
+
+  /* Hero */
+  .txt-principal { font-size: 2.8rem; letter-spacing: 5px; }
+  .subtitulo { font-size: 11px; letter-spacing: 2px; }
+  .btn-principal { padding: 12px 28px; font-size: 0.75rem; }
+
+  /* Trailer */
+  .trailer-section { padding: 24px 16px; }
+  .titulo-trailer { font-size: 1.4rem; letter-spacing: 4px; margin-bottom: 20px; }
+  .recording-text { font-size: 0.5rem; }
+
+  /* Sinopse */
+  .sinopse-section { padding: 40px 16px 32px; gap: 24px; }
+  .titulo-sinopse { font-size: 16px; letter-spacing: 2px; }
+  .texto-sinopse { font-size: 15px; letter-spacing: 1px; }
+  .cartas img { height: 380px; width: 100%; max-width: 280px; }
+
+  /* Lutadores */
+  .sessao-personagens { padding: 40px 16px; }
+  .titulo-lutadores { font-size: 1.4rem; letter-spacing: 3px; margin-bottom: 24px; }
+  .container-cards-expansivos { height: 400px; gap: 8px; }
+  .cartao { border-radius: 10px; }
+  .info-cartao { bottom: 16px; left: 14px; right: 14px; }
+  .info-cartao h3 { font-size: 1.5rem; }
+  .info-cartao p { font-size: 0.75rem; }
+  .container-status { margin: 12px 0; }
+  .carousel-btn img { width: 120px; }
+
+  /* Mídia */
+  .midia-section { padding: 40px 16px; }
+  .titulo-midia { font-size: 1.4rem; letter-spacing: 3px; margin-bottom: 24px; }
+  .cartao-midia { height: 240px; border-radius: 10px; }
+  .label-midia { font-size: 10px; bottom: 16px; }
+  .cartao-midia.esquerda .label-midia { left: 16px; }
+  .cartao-midia.direita .label-midia  { right: 16px; }
+
+  /* Depoimentos */
+  .sessao-depoimentos { padding: 40px 0; }
+  .cabecalho-secao { padding: 0 16px; }
+  .titulo-secao { font-size: 1rem; letter-spacing: 3px; }
+  .card-depoimento { min-width: 240px; padding: 18px; }
+  .texto-card { font-size: 0.8rem; }
+
+  /* Rodapé */
+  .rodape { padding: 60px 16px 40px; }
+  .creditos { font-size: 0.55rem; }
+}

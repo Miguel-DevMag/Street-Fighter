@@ -1,18 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-
-    // 1. Lógica do cursor HUD tático
+    // Cursor HUD tático
     const cursor = document.querySelector('.cursor-tatico');
-    
     document.addEventListener('mousemove', (e) => {
         cursor.style.left = e.clientX + 'px';
         cursor.style.top = e.clientY + 'px';
     });
-
     document.addEventListener('mousedown', () => cursor.classList.add('clique'));
     document.addEventListener('mouseup', () => cursor.classList.remove('clique'));
 
-    // 2. Parallax dinâmico no Frame de Mira (Hero)
+    // Parallax no Frame de Mira
     const frameMira = document.querySelector('.frame-mira');
     document.addEventListener('mousemove', (e) => {
         if (frameMira) {
@@ -21,73 +18,37 @@ document.addEventListener('DOMContentLoaded', () => {
             frameMira.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
         }
     });
-});
 
-    // Efeito Typewriter para Sinopse ,Seleciona os elementos individualmente na ordem exata de execução
-const elementosTypewriter = document.querySelectorAll('.texto-sinopse, .titulo-sinopse');
-
-elementosTypewriter.forEach((elemento) => {
-    const texto = elemento.getAttribute('data-text') || elemento.textContent.trim();
-    let index = 0;
-    let jaIniciado = false;
-    
-    elemento.style.position = 'relative';
-    elemento.innerHTML = `<span style="visibility: hidden;">${texto}</span><span class="typewriter-render" style="position: absolute; left: 0; top: 0; width: 100%;"></span>`;
-    
-    const areaDigitacao = elemento.querySelector('.typewriter-render');
-
-    const digitar = () => {
-        if (index < texto.length) {
-            areaDigitacao.innerHTML += texto.charAt(index);
-            index++;
-            setTimeout(digitar, 30);
-        } else {
-            areaDigitacao.style.borderRight = "none";
-            // Sinaliza que o título terminou para liberar o próximo
-            if (elemento.classList.contains('titulo-sinopse')) {
-                document.body.classList.add('titulo-pronto');
-            }
-        }
-    };
-
-    const verificarEIniciar = () => {
-        if (jaIniciado) return;
-
-        // Se for o texto, ele só inicia se o título já tiver terminado
-        if (elemento.classList.contains('texto-sinopse')) {
-            if (document.body.classList.contains('titulo-pronto')) {
-                jaIniciado = true;
-                digitar();
-            } else {
-                // Tenta novamente em 100ms se o título ainda estiver digitando
-                setTimeout(verificarEIniciar, 100);
-            }
-        } else {
-            // Se for o título, inicia imediatamente ao aparecer na tela
-            jaIniciado = true;
-            digitar();
-        }
-    };
-
-    const observadorTexto = new IntersectionObserver((entradas) => {
-        entradas.forEach((entrada) => {
-            if (entrada.isIntersecting) {
-                verificarEIniciar();
-            }
+    // Hambúrguer — menu mobile
+    const btnHamb = document.getElementById('btn-hamburguer');
+    const navMenu = document.getElementById('nav-menu');
+    if (btnHamb && navMenu) {
+        btnHamb.addEventListener('click', () => {
+            btnHamb.classList.toggle('aberto');
+            navMenu.classList.toggle('aberta');
         });
-    }, { threshold: 0.5 });
+        // Fecha ao clicar em qualquer link
+        navMenu.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                btnHamb.classList.remove('aberto');
+                navMenu.classList.remove('aberta');
+            });
+        });
+    }
 
-    observadorTexto.observe(elemento);
-});
- // Lógica de cartões expansíveis e reset de status
+    // Desativa cursor custom em dispositivos touch
+    if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
+        if (cursor) cursor.style.display = 'none';
+    }
+
+    // Cartões expansíveis
     const cartoes = document.querySelectorAll('.cartao');
 
     const animarBarras = (container) => {
-        const preenchimentos = container.querySelectorAll('.preenchimento');
-        preenchimentos.forEach(preenchimento => {
-            const largura = preenchimento.style.width;
-            preenchimento.style.width = '0';
-            setTimeout(() => preenchimento.style.width = largura, 100);
+        container.querySelectorAll('.preenchimento').forEach(p => {
+            const w = p.style.width;
+            p.style.width = '0';
+            setTimeout(() => p.style.width = w, 100);
         });
     };
 
@@ -101,39 +62,138 @@ elementosTypewriter.forEach((elemento) => {
         });
     });
 
-    // Seleção dos botões de controle do carrossel (anterior e próximo)
+    // Botões do carrossel
     const btnPrev = document.querySelector('.btn-prev');
     const btnNext = document.querySelector('.btn-next');
 
-    // Verifica se os botões existem no DOM antes de adicionar os ouvintes
     if (btnPrev && btnNext) {
-        // Função auxiliar para mudar o lutador ativo baseado no offset (-1 ou 1)
         const alternarLutador = (offset) => {
-            const listaCartoes = Array.from(cartoes);
-            const indexAtivo = listaCartoes.findIndex(c => c.classList.contains('ativa'));
-            
-            if (indexAtivo !== -1) {
-                // Calcula o próximo índice utilizando lógica circular (loop infinito)
-                let novoIndex = (indexAtivo + offset) % listaCartoes.length;
-                if (novoIndex < 0) {
-                    novoIndex = listaCartoes.length - 1;
-                }
-                
-                const proximoCartao = listaCartoes[novoIndex];
-                
-                // Reseta a classe ativa de todos e atribui ao próximo lutador selecionado
+            const lista = Array.from(cartoes);
+            const idx = lista.findIndex(c => c.classList.contains('ativa'));
+            if (idx !== -1) {
+                let novo = (idx + offset) % lista.length;
+                if (novo < 0) novo = lista.length - 1;
                 cartoes.forEach(c => c.classList.remove('ativa'));
-                proximoCartao.classList.add('ativa');
-                
-                // Executa a animação de preenchimento das barras de status
-                animarBarras(proximoCartao);
+                lista[novo].classList.add('ativa');
+                animarBarras(lista[novo]);
             }
         };
-
-        // Ouvinte de clique para retroceder no carrossel
         btnPrev.addEventListener('click', () => alternarLutador(-1));
-
-        // Ouvinte de clique para avançar no carrossel
         btnNext.addEventListener('click', () => alternarLutador(1));
     }
 
+    // Scroll Reveal
+    const revelar = new IntersectionObserver((entradas) => {
+        entradas.forEach(entrada => {
+            if (entrada.isIntersecting) {
+                entrada.target.classList.add('revelada');
+                revelar.unobserve(entrada.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.secao-revelar').forEach(el => revelar.observe(el));
+
+    // Partículas sobre cartas-fanart
+    const canvas = document.getElementById('canvas-particulas');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        const imgEl = canvas.previousElementSibling;
+
+        const redimensionar = () => {
+            canvas.width  = imgEl.offsetWidth;
+            canvas.height = imgEl.offsetHeight;
+        };
+        redimensionar();
+        window.addEventListener('resize', redimensionar);
+
+        const cores = ['#00a2ff', '#ff4500', '#ffd700', '#ff0000', '#ffffff'];
+
+        class Particula {
+            constructor() { this.resetar(); }
+            resetar() {
+                this.x    = Math.random() * canvas.width;
+                this.y    = canvas.height + Math.random() * 40;
+                this.r    = Math.random() * 2.5 + 0.5;
+                this.vy   = -(Math.random() * 0.8 + 0.3);
+                this.vx   = (Math.random() - 0.5) * 0.4;
+                this.alfa = Math.random() * 0.7 + 0.2;
+                this.cor  = cores[Math.floor(Math.random() * cores.length)];
+            }
+            atualizar() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.alfa -= 0.003;
+                if (this.y < -10 || this.alfa <= 0) this.resetar();
+            }
+            desenhar() {
+                ctx.save();
+                ctx.globalAlpha = this.alfa;
+                ctx.fillStyle   = this.cor;
+                ctx.shadowColor = this.cor;
+                ctx.shadowBlur  = 6;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        const particulas = Array.from({ length: 60 }, () => new Particula());
+
+        const animar = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particulas.forEach(p => { p.atualizar(); p.desenhar(); });
+            requestAnimationFrame(animar);
+        };
+        animar();
+    }
+});
+
+// Typewriter para Sinopse (fora do DOMContentLoaded — funciona igual)
+const elementosTypewriter = document.querySelectorAll('.texto-sinopse, .titulo-sinopse');
+
+elementosTypewriter.forEach((elemento) => {
+    const texto = elemento.getAttribute('data-text') || elemento.textContent.trim();
+    let index = 0;
+    let jaIniciado = false;
+    elemento.style.position = 'relative';
+    elemento.innerHTML = `<span style="visibility: hidden;">${texto}</span><span class="typewriter-render" style="position: absolute; left: 0; top: 0; width: 100%;"></span>`;
+    const areaDigitacao = elemento.querySelector('.typewriter-render');
+
+    const digitar = () => {
+        if (index < texto.length) {
+            areaDigitacao.innerHTML += texto.charAt(index);
+            index++;
+            setTimeout(digitar, 30);
+        } else {
+            areaDigitacao.style.borderRight = "none";
+            if (elemento.classList.contains('titulo-sinopse')) {
+                document.body.classList.add('titulo-pronto');
+            }
+        }
+    };
+
+    const verificarEIniciar = () => {
+        if (jaIniciado) return;
+        if (elemento.classList.contains('texto-sinopse')) {
+            if (document.body.classList.contains('titulo-pronto')) {
+                jaIniciado = true;
+                digitar();
+            } else {
+                setTimeout(verificarEIniciar, 100);
+            }
+        } else {
+            jaIniciado = true;
+            digitar();
+        }
+    };
+
+    const observadorTexto = new IntersectionObserver((entradas) => {
+        entradas.forEach((entrada) => {
+            if (entrada.isIntersecting) verificarEIniciar();
+        });
+    }, { threshold: 0.5 });
+
+    observadorTexto.observe(elemento);
+});

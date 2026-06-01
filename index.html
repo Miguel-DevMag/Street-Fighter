@@ -30,19 +30,22 @@
             <div>
                 <img src="image/logo.png" alt="Logo" />
             </div>
-                <ul>
-                    <li><a href="#home">HOME</a></li>
-                    <li><a href="#trailer">TRAILER</a></li>
-                    <li><a href="#sinopse">SINOPSE</a></li>
-                    <li><a href="#lutadores">LUTADORES</a></li>
-                    <li><a href="#infor-game">MIDIA</a></li>
-                    <li><a href="#footer">COMENTARIOS</a></li>
-                    <li><a href="#ingressos">INGRESSOS</a></li>
+                <ul id="nav-menu">
+                    <li><a href="#home" class="nav-link">HOME</a></li>
+                    <li><a href="#trailer" class="nav-link">TRAILER</a></li>
+                    <li><a href="#sinopse" class="nav-link">SINOPSE</a></li>
+                    <li><a href="#lutadores" class="nav-link">LUTADORES</a></li>
+                    <li><a href="#infor-game" class="nav-link">MIDIA</a></li>
+                    <li><a href="#footer" class="nav-link">COMENTARIOS</a></li>
+                    <li><a href="#ingressos" class="nav-link">INGRESSOS</a></li>
                 </ul>
         <div class="nav-sistema">
             <div class="botao-ativo"></div>
            <p>SISTEMA_PRONTO</p>
         </div>
+        <button class="nav-hamburguer" id="btn-hamburguer" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
         </nav>
       </header>
 
@@ -59,7 +62,7 @@
           </div>
         </div>
       </main>
-      <section id="trailer" class="trailer-section">
+      <section id="trailer" class="trailer-section secao-revelar">
         <h2 class="titulo-trailer">TRAILER OFICIAL</h2>
         <div class="video-trailer vidro-trailer">
           <video controls poster="image/batalha.png">
@@ -71,7 +74,7 @@
           <span class="recording-text">LIVE FEED // CAMERA_DE_COMBATE_01</span>
         </div>
       </section>
-        <section id="sinopse" class="sinopse-section">
+        <section id="sinopse" class="sinopse-section secao-revelar">
           <div class="sinopse-content">
           <h2 class="titulo-sinopse" data-text="Em um futuro onde o poder corporativo substituiu as nações...">Em um futuro onde o poder corporativo substituiu as nações...</h2>
           <p class="texto-sinopse" data-text="A Shadaloo emerge como uma ameaça global de controle mental.
@@ -85,6 +88,7 @@
           <div class="cartas">
             <div>
               <img src="image/cartas-fanart.png" alt="">
+              <canvas id="canvas-particulas"></canvas>
             </div>
           </div>
         </section>
@@ -180,22 +184,34 @@
             </button>
         </div>
     </section>
-    <section id="infor-game" class="midia-section">
+    <section id="infor-game" class="midia-section secao-revelar">
         <h2 class="titulo-midia">INSIGHTS DE COMBATE</h2>
         <div class="container-midia">
             <div class="cartao-midia esquerda">
                 <img src="image/ryu-sombrio.png" alt="Ryu Sombrio">
                 <div class="moldura-tatico"></div>
                 <span class="label-midia">STK_STATUS: ONLINE</span>
+                <div class="midia-overlay">
+                  <p class="midia-overlay-titulo">Ryu // Modo Sombrio</p>
+                  <p class="midia-overlay-sub">O andarilho busca o sentido da força</p>
+                </div>
             </div>
             <div class="cartao-midia centro">
                 <img src="image/batalha.png" alt="Hadouken vs Shoryuken">
                 <div class="moldura-tatico"></div>
+                <div class="midia-overlay">
+                  <p class="midia-overlay-titulo">Hadouken vs Shoryuken</p>
+                  <p class="midia-overlay-sub">O confronto que define uma geração</p>
+                </div>
             </div>
             <div class="cartao-midia direita">
                 <img src="image/kimono.png" alt="Kimono Detail">
                 <div class="moldura-tatico"></div>
                 <span class="label-midia">BATTLE_LINK_v4.2</span>
+                <div class="midia-overlay">
+                  <p class="midia-overlay-titulo">Arte // Kimono</p>
+                  <p class="midia-overlay-sub">Tradição e combate entrelaçados</p>
+                </div>
             </div>
         </div>
     </section>
